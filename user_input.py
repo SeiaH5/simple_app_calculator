@@ -1,6 +1,6 @@
-from mdas import mdas
+from mdas import MDAS
 
-class ask_user:
+class UserInput:
     MENU = {
         "1": ("Multiplication", "*"),
         "2": ("Division",       "/"),
@@ -35,7 +35,7 @@ class ask_user:
                 continue
 
             # Child class object
-            numbers = mdas(num_1, num_2)
+            numbers = MDAS(num_1, num_2)
 
             try:
                 if choice == "1":

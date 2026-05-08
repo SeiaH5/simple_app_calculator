@@ -1,3 +1,3 @@
-from user_input import ask_user
+from user_input import UserInput
 
-ask_user().run()
+UserInput().run()

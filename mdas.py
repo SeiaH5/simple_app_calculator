@@ -1,4 +1,4 @@
-class md_operation:
+class MDOperation:
     def __init__(self, num_1, num_2):
         self.num_1 = num_1
         self.num_2 = num_2
@@ -11,7 +11,7 @@ class md_operation:
             raise ZeroDivisionError("\n\033[31mCannot divide by zero.\033[0m")
         return self.num_1 / self.num_2
 
-class mdas(md_operation):
+class MDAS(MDOperation):
 
     def add(self):
         return self.num_1 + self.num_2
