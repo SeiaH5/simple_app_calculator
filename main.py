@@ -46,4 +46,11 @@ class ask_user:
                 print("\033[31mInvalid choice. Try again.\033[0m")
                 continue
 
+            try:
+                num_1 = int(input("Enter first integer : "))
+                num_2 = int(input("Enter second integer: "))
+            except ValueError:
+                print("\033[31mInvalid input. Please enter whole numbers.\033[0m")
+                continue
+
 ask_user().run()
