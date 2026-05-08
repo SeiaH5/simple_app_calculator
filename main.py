@@ -49,8 +49,26 @@ class ask_user:
             try:
                 num_1 = int(input("Enter first integer : "))
                 num_2 = int(input("Enter second integer: "))
+
             except ValueError:
                 print("\033[31mInvalid input. Please enter whole numbers.\033[0m")
                 continue
+
+            numbers = MDAS(num_1, num_2)
+
+            try:
+                if choice == "1":
+                    result = numbers.multiply()
+                elif choice == "2":
+                    result = numbers.divide()
+                elif choice == "3":
+                    result = numbers.add()
+                else:
+                    result = numbers.subtract()
+
+                print(f"\n\033[1mResult: \033[32m{result}\033[0m")
+
+            except ZeroDivisionError as e:
+                print(f"\033[31mError: {e}\033[0m")
 
 ask_user().run()
