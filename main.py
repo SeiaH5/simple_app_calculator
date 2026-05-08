@@ -71,4 +71,15 @@ class ask_user:
             except ZeroDivisionError as e:
                 print(f"\033[31mError: {e}\033[0m")
 
+            while True:
+                try_again = input("\n\033[1mDo you want to try again? \033[35m[yes/no]: \033[0m").strip().lower()
+                if try_again in ("yes", "no"):
+                    break
+
+                print("\n\033[31m\033[1mPlease enter 'yes' or 'no' only.\033[0m")
+
+            if try_again in ("no"):
+                print("\n\033[1mThank you!\033[0m\n")
+                break
+
 ask_user().run()
