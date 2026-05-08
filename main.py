@@ -29,21 +29,27 @@ class MDAS:
 
 
 class ask_user:
+    MENU = {
+        "1": ("Multiplication", "*"),
+        "2": ("Division",       "/"),
+        "3": ("Addition",       "+"),
+        "4": ("Subtraction",    "-"),
+    }
+    
     def run(self):
         print("\n===========================")
         print("\033[1m         Calculator      \033[0m")
         print("===========================")
-
+        
         while True:
-            print("""\n1. Multiply 
-2. Divide
-3. Add
-4. Subtract
-                  """)
-            choice = input("Choose an operation (1-4): ").strip()
+            print()
+            for key, (name, symbol) in self.MENU.items():
+                print(f"  {key}. {name} ({symbol})")
+            choice = input("\n\033[1mChoose an operation (1-4): \033[0m").strip()
 
-            if choice not in ("1", "2", "3", "4"):
-                print("\033[31mInvalid choice. Try again.\033[0m")
+            if choice not in self.MENU:
+                print("\n\033[31mInvalid choice. Try again.\033[0m")
+                print("-"*27)
                 continue
 
             try:
@@ -51,7 +57,8 @@ class ask_user:
                 num_2 = int(input("Enter second integer: "))
 
             except ValueError:
-                print("\033[31mInvalid input. Please enter whole numbers.\033[0m")
+                print("\n\033[31mInvalid input. Please enter an integer.\033[0m")
+                print("-"*45)
                 continue
 
             numbers = MDAS(num_1, num_2)
@@ -70,16 +77,17 @@ class ask_user:
 
             except ZeroDivisionError as e:
                 print(f"\033[31mError: {e}\033[0m")
+                print("-"*30)
 
             while True:
                 try_again = input("\n\033[1mDo you want to try again? \033[35m[yes/no]: \033[0m").strip().lower()
                 if try_again in ("yes", "no"):
+                    print("\n")
                     break
-
                 print("\n\033[31m\033[1mPlease enter 'yes' or 'no' only.\033[0m")
 
             if try_again in ("no"):
-                print("\n\033[1mThank you!\033[0m\n")
+                print("\033[1mThank you!\033[0m\n")
                 break
 
 ask_user().run()
