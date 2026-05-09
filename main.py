@@ -1,14 +1,4 @@
-# 1.  The application will ask the user to choose one of the 
-#       four math operations (Addition, Subtraction, Multiplication and Division)
-# 2.  The application will ask the user for two numbers
-# 3.  Display the result
-# 4. The application will ask if the user wants to try again or not.
-# 5. If yes, repeat Step 1.
-# 6. If no, Display “Thank you!” and the program will exit 
-# 7. Use Python Function and appropriate Exceptions to capture errors during   
-#     runtime.
-
-class MDAS:
+class md_operation:
     def __init__(self, num_1, num_2):
         self.num_1 = num_1
         self.num_2 = num_2
@@ -18,8 +8,10 @@ class MDAS:
 
     def divide(self):
         if self.num_2 == 0:
-            raise ZeroDivisionError("Cannot divide by zero.")
+            raise ZeroDivisionError("\n\033[31mCannot divide by zero.\033[0m")
         return self.num_1 / self.num_2
+
+class mdas(md_operation):
 
     def add(self):
         return self.num_1 + self.num_2
@@ -45,6 +37,7 @@ class ask_user:
             print()
             for key, (name, symbol) in self.MENU.items():
                 print(f"  {key}. {name} ({symbol})")
+
             choice = input("\n\033[1mChoose an operation (1-4): \033[0m").strip()
 
             if choice not in self.MENU:
@@ -61,15 +54,19 @@ class ask_user:
                 print("-"*45)
                 continue
 
-            numbers = MDAS(num_1, num_2)
+            # Child class object
+            numbers = mdas(num_1, num_2)
 
             try:
                 if choice == "1":
                     result = numbers.multiply()
+
                 elif choice == "2":
                     result = numbers.divide()
+
                 elif choice == "3":
                     result = numbers.add()
+
                 else:
                     result = numbers.subtract()
 
@@ -81,13 +78,16 @@ class ask_user:
 
             while True:
                 try_again = input("\n\033[1mDo you want to try again? \033[35m[yes/no]: \033[0m").strip().lower()
+
                 if try_again in ("yes", "no"):
                     print("\n")
                     break
+
                 print("\n\033[31m\033[1mPlease enter 'yes' or 'no' only.\033[0m")
 
-            if try_again in ("no"):
+            if try_again == "no":
                 print("\033[1mThank you!\033[0m\n")
                 break
+
 
 ask_user().run()
