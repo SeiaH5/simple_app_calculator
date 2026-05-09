@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 class md_operation:
+=======
+class MDAS:
+>>>>>>> 2b2fcd0cdcc947a9d05f86a9b69a20609fe8699a
     def __init__(self, num_1, num_2):
         self.num_1 = num_1
         self.num_2 = num_2
@@ -89,5 +93,9 @@ class ask_user:
                 print("\033[1mThank you!\033[0m\n")
                 break
 
+<<<<<<< HEAD
 
 ask_user().run()
+=======
+ask_user().run()
+>>>>>>> 2b2fcd0cdcc947a9d05f86a9b69a20609fe8699a
